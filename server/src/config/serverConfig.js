@@ -5,7 +5,12 @@ const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
 
 const corsOptions = {
-  origin: [process.env.CLIENT_URL],
+  origin: [
+    process.env.CLIENT_URL,
+    "https://beavers-bar.ru",
+    "https://www.beavers-bar.ru",
+    "http://localhost:5173",
+  ],
   credentials: true,
 };
 
