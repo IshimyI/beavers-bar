@@ -12,10 +12,12 @@ export default function Bar() {
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
-    if (user) {
+    // Стор уже мог быть заполнен раньше (BarStorage грузит те же данные) —
+    // не дублируем загрузку и не мигаем "Загрузка..." при каждом заходе.
+    if (user && stock.length === 0) {
       void dispatch(getStockThunk(user));
     }
-  }, [dispatch, user]);
+  }, [dispatch, user, stock.length]);
 
   const handleMouseOver = (type: string) => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);

@@ -91,18 +91,21 @@ export default function BarStorage() {
   }, [dispatch, user, alkoStock, processedItems]);
 
   useEffect(() => {
+    // Redux-состояние живёт дольше компонента: если данные уже загружены
+    // (например, мы просто вернулись на страницу бара), не дёргаем сервер
+    // заново — иначе каждый заход показывает "Загрузка..." без необходимости.
+    if (!user || ingredients.length > 0) return;
+
     const fetchData = async () => {
-      if (user) {
-        try {
-          await dispatch(getIngredientsThunk());
-          await dispatch(getStockThunk(user));
-        } catch (error) {
-          console.error("Error fetching", error);
-        }
+      try {
+        await dispatch(getIngredientsThunk());
+        await dispatch(getStockThunk(user));
+      } catch (error) {
+        console.error("Error fetching", error);
       }
     };
     fetchData();
-  }, [dispatch, user]);
+  }, [dispatch, user, ingredients.length]);
 
   const handleFormClose = () => {
     setShowAddForm(false);
