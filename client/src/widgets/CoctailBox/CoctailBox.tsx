@@ -140,9 +140,23 @@ export default function CoctailBox({ recipes, onOpen }: Prop) {
       {filteredRecipes.length !== 0 && (
         <>
           <div className={styles.carouselContainer}>
-            <button className={styles.scrollButton} onClick={scrollLeft}>
-              {" "}
-              <img src="../../../public/left-arrow.png" alt="left" />
+            <button
+              className={styles.scrollButton}
+              onClick={scrollLeft}
+              aria-label="Прокрутить влево"
+            >
+              <svg
+                width="28"
+                height="28"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="m15 18-6-6 6-6" />
+              </svg>
             </button>
             <div className={styles.carousel} ref={carouselRef}>
               <div className={styles.recipeList}>
@@ -155,9 +169,23 @@ export default function CoctailBox({ recipes, onOpen }: Prop) {
                 ))}
               </div>
             </div>
-            <button className={styles.scrollButton} onClick={scrollRight}>
-              {" "}
-              <img src="../../../public/right-arrow.png" alt="right" />
+            <button
+              className={styles.scrollButton}
+              onClick={scrollRight}
+              aria-label="Прокрутить вправо"
+            >
+              <svg
+                width="28"
+                height="28"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="m9 18 6-6-6-6" />
+              </svg>
             </button>
           </div>
         </>

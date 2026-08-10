@@ -149,7 +149,24 @@ export default function ModalRecipe({
   return (
     <div className={styles.modalOverlay}>
       {recipeIndex > 0 && (
-        <button className={`${styles.modalArrow} ${styles.modalArrowLeft}`} onClick={() => setRecipeIndex(recipeIndex - 1)}><img src='../../../public/left-arrow.png' alt='left' /></button>
+        <button
+          className={`${styles.modalArrow} ${styles.modalArrowLeft}`}
+          onClick={() => setRecipeIndex(recipeIndex - 1)}
+          aria-label="Предыдущий рецепт"
+        >
+          <svg
+            width="28"
+            height="28"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="m15 18-6-6 6-6" />
+          </svg>
+        </button>
       )}
 
       <div className={styles.modalContainer}>
@@ -270,7 +287,24 @@ export default function ModalRecipe({
       </div>
 
       {recipeIndex < recipesLength - 1 && (
-        <button  className={`${styles.modalArrow} ${styles.modalArrowRight}`} onClick={() => setRecipeIndex(recipeIndex + 1)}><img src='../../../public/right-arrow.png' alt='right' /></button>
+        <button
+          className={`${styles.modalArrow} ${styles.modalArrowRight}`}
+          onClick={() => setRecipeIndex(recipeIndex + 1)}
+          aria-label="Следующий рецепт"
+        >
+          <svg
+            width="28"
+            height="28"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="m9 18 6-6-6-6" />
+          </svg>
+        </button>
       )}
     </div>
   );

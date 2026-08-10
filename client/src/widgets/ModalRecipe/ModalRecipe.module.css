@@ -199,22 +199,25 @@
   justify-content: center;
   width: 50px;
   height: 50px;
+  color: var(--color-white);
   cursor: pointer;
   background: rgb(255 255 255 / 5%);
   border: none;
   border-radius: 50%;
   opacity: 0.8;
-  transition: background 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  transition: background 0.3s ease-in-out, opacity 0.3s ease-in-out,
+    color 0.3s ease-in-out;
 }
 
 .modalArrow:hover {
+  color: var(--color-green);
   background: rgb(181 181 181 / 10%);
   opacity: 1;
 }
 
-.modalArrow img {
-  width: 35px;
-  height: auto;
+.modalArrow svg {
+  width: 28px;
+  height: 28px;
 }
 
 .modalArrowLeft {
