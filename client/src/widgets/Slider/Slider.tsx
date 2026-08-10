@@ -21,11 +21,6 @@ export default function Slider() {
       backgroundImage: "/coctail_bar.jpg",
       navigator: "/journal",
     },
-    {
-      page: "Магазин",
-      backgroundImage: "/shop.jpg",
-      navigator: "/shop",
-    },
   ];
 
   return (
