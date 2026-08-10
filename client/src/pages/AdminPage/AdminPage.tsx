@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
-import { ShopStorages } from "../ShopStorages/ShopStorages";
 import styles from "./AdminPage.module.css";
-import Orders from "@/pages/OrdersPage/OrdersPage";
 import { useAppSelector } from "@/shared/hooks/reduxHook";
 import { useNavigate } from "react-router-dom";
 import { CLIENT_ROUTES } from "@/shared/enums/clientRoutes";
@@ -11,8 +9,8 @@ import DrinkCreateForm from "@/widgets/DrinksCrud/DrinkCreateForm";
 
 export function AdminPage() {
   const [activeModule, setActiveModule] = useState<
-    "orders" | "shopStorages" | "recipes" | "drinks"
-  >("orders");
+    "recipes" | "drinks"
+  >("recipes");
   const user = useAppSelector((state) => state.user.user);
   const navigate = useNavigate();
 
@@ -37,22 +35,6 @@ export function AdminPage() {
       <div className={styles.tabs}>
         <button
           className={`${styles.tabButton} ${
-            activeModule === "orders" ? styles.active : ""
-          }`}
-          onClick={() => setActiveModule("orders")}
-        >
-          Заказы
-        </button>
-        <button
-          className={`${styles.tabButton} ${
-            activeModule === "shopStorages" ? styles.active : ""
-          }`}
-          onClick={() => setActiveModule("shopStorages")}
-        >
-          Склад
-        </button>
-        <button
-          className={`${styles.tabButton} ${
             activeModule === "recipes" ? styles.active : ""
           }`}
           onClick={() => setActiveModule("recipes")}
@@ -71,8 +53,6 @@ export function AdminPage() {
 
       {/* Рендерим активный модуль */}
       <div className={styles.moduleContainer}>
-        {activeModule === "orders" && <Orders />}
-        {activeModule === "shopStorages" && <ShopStorages />}
         {activeModule === "recipes" && <RecipeCrud />}
         {activeModule === "drinks" && <DrinkCreateForm />}
       </div>

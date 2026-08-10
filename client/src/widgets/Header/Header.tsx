@@ -2,11 +2,9 @@ import { CLIENT_ROUTES } from "@/shared/enums/clientRoutes";
 import { NavLink, useNavigate } from "react-router";
 import styles from "./Header.module.css";
 import { UserAvatar } from "@/entities/user/ui/UserAvatar/UserAvatar";
-import { JSX, useEffect } from "react";
+import { JSX } from "react";
 import { useAppDispatch, useAppSelector } from "@/shared/hooks/reduxHook";
 import { signOutThunk } from "@/entities/user";
-import { initializeCart } from "@/app/store/cartSlice";
-import { getCart } from "@/shared/api/api";
 import { useAlert } from "@/features/alert";
 
 export function Header(): JSX.Element {
@@ -14,15 +12,6 @@ export function Header(): JSX.Element {
   const user = useAppSelector((state) => state.user.user);
   const dispatch = useAppDispatch();
   const { showAlert } = useAlert();
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const cartData = await getCart();
-      dispatch(initializeCart(cartData));
-    };
-
-    fetchData();
-  }, [dispatch]);
 
   const onLogoutHandler = async () => {
     dispatch(signOutThunk());
@@ -92,21 +81,6 @@ export function Header(): JSX.Element {
       {/* Правая секция */}
       <div className={styles.rightSection}>
         <div className={styles.navLinks}>
-          <NavLink
-            to={CLIENT_ROUTES.SHOP_FORM}
-            className={({ isActive }) =>
-              `${isActive ? styles.active : ""} ${styles.navLink}`
-            }
-            style={({ isActive }) =>
-              isActive
-                ? ({
-                    "--active-color": "var(--color-green)",
-                  } as React.CSSProperties)
-                : undefined
-            }
-          >
-            Магазин
-          </NavLink>
           {!user ? (
             <>
               <NavLink
