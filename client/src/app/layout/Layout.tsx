@@ -37,7 +37,7 @@ export default function Layout(): JSX.Element {
 
   useEffect(() => {
     const pageTitle = getPageTitle(location.pathname);
-    document.title = `Culture | ${pageTitle}`;
+    document.title = `Beavers-Bar | ${pageTitle}`;
   }, [location.pathname]);
 
   return (
