@@ -34,7 +34,7 @@
 
 .barShelf {
   position: absolute;
-  top: -30%;
+  top: 135%;
   left: 0;
   z-index: -1;
   width: 100%;
