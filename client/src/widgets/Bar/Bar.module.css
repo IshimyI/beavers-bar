@@ -20,12 +20,26 @@
   top: 23vh;
   left: 0%;
   z-index: 5;
-  display: grid;
-  grid-template-rows: repeat(3, 1fr);
-  grid-template-columns: repeat(8, 1fr);
+  display: flex;
+  flex-direction: column;
   row-gap: 7vh;
-  justify-content: center;
   width: 100%;
+}
+
+.barRow {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+}
+
+.barShelf {
+  position: absolute;
+  top: -30%;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
 }
 
 .barItem {

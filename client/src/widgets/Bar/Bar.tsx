@@ -49,6 +49,12 @@ export default function Bar() {
     {}
   );
 
+  const visibleTypes = typesOrder.slice(0, 24);
+  const rows: string[][] = [];
+  for (let i = 0; i < visibleTypes.length; i += 8) {
+    rows.push(visibleTypes.slice(i, i + 8));
+  }
+
   return (
     <div className={styles.bar}>
 
@@ -56,34 +62,39 @@ export default function Bar() {
         {loading ? (
           <p>Загрузка...</p>
         ) : (
-          typesOrder.slice(0, 24).map((type) => (
-            <div
-              key={type}
-              className={styles.barItem}
-              onMouseOver={() => handleMouseOver(type)}
-              onMouseOut={handleMouseOut}
-            >
-              {hoveredType === type && (
-                <div className={styles.barBlock}>
-                  <p>
-                    <strong>{type}</strong>
-                  </p>
-                  {stockByType[type].map((ingredient) => (
-                    <p key={`${ingredient.id}-${ingredient.title}`}>
-                      {ingredient.title || type} —{" "}
-                      {ingredient.ingredientBalance} мл
-                      {ingredient.strength && ` (${ingredient.strength}%)`}
-                    </p>
-                  ))}
+          rows.map((row, rowIndex) => (
+            <div className={styles.barRow} key={rowIndex}>
+              <img className={styles.barShelf} src="/shelf.png" alt="" />
+              {row.map((type) => (
+                <div
+                  key={type}
+                  className={styles.barItem}
+                  onMouseOver={() => handleMouseOver(type)}
+                  onMouseOut={handleMouseOut}
+                >
+                  {hoveredType === type && (
+                    <div className={styles.barBlock}>
+                      <p>
+                        <strong>{type}</strong>
+                      </p>
+                      {stockByType[type].map((ingredient) => (
+                        <p key={`${ingredient.id}-${ingredient.title}`}>
+                          {ingredient.title || type} —{" "}
+                          {ingredient.ingredientBalance} мл
+                          {ingredient.strength && ` (${ingredient.strength}%)`}
+                        </p>
+                      ))}
+                    </div>
+                  )}
+                  <img
+                    src={
+                      stockByType[type][0]?.ingredientType?.imgUrl ||
+                      "/ingredients/default.png"
+                    }
+                    alt={`${type} bottle`}
+                  />
                 </div>
-              )}
-              <img
-                src={
-                  stockByType[type][0]?.ingredientType?.imgUrl ||
-                  "/ingredients/default.png"
-                }
-                alt={`${type} bottle`}
-              />
+              ))}
             </div>
           ))
         )}
