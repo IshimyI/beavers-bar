@@ -52,16 +52,16 @@
   top: 135%;
   z-index: -1;
   width: auto;
-  height: 8.5vh;
+  height: 9.5vh;
   pointer-events: none;
 }
 
 .shelfCapLeft {
-  left: 0;
+  left: -20px;
 }
 
 .shelfCapRight {
-  right: 0;
+  right: -20px;
 }
 
 .barItem {
