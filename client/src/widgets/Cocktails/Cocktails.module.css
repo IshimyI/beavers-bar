@@ -3,6 +3,10 @@
   padding: 20px;
   margin-left: auto;
   color: #fff;
+  background-image: url("/bar-side.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 .containerLabel {
