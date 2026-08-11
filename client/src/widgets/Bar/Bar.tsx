@@ -51,7 +51,6 @@ export default function Bar() {
 
   return (
     <div className={styles.bar}>
-      <img src="/bar.jpg" alt="Бар" />
 
       <div className={styles.barCollection}>
         {loading ? (
