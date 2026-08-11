@@ -46,6 +46,24 @@
   background-size: auto 100%;
 }
 
+.shelfCapLeft,
+.shelfCapRight {
+  position: absolute;
+  top: 135%;
+  z-index: -1;
+  width: auto;
+  height: 1.25vh;
+  pointer-events: none;
+}
+
+.shelfCapLeft {
+  left: 0;
+}
+
+.shelfCapRight {
+  right: 0;
+}
+
 .barItem {
   position: relative;
   display: flex;

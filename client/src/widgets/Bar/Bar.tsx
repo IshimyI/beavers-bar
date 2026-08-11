@@ -65,6 +65,8 @@ export default function Bar() {
           rows.map((row, rowIndex) => (
             <div className={styles.barRow} key={rowIndex}>
               <div className={styles.barShelf} />
+              <img className={styles.shelfCapLeft} src="/shelf-left.png" alt="" />
+              <img className={styles.shelfCapRight} src="/shelf-right.png" alt="" />
               {row.map((type) => (
                 <div
                   key={type}
