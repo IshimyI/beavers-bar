@@ -3,8 +3,10 @@
   flex-direction: column;
   gap: 20px;
   width: 350px;
+  height: 90vh;
   padding: 20px;
   margin-left: 0;
+  overflow: hidden;
   color: #fff;
   background-image: url("/bar-side.jpg");
   background-repeat: no-repeat;
