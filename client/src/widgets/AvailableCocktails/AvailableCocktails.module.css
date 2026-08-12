@@ -18,8 +18,12 @@
 
 .recipeCard {
   position: relative;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-areas:
+    "content content"
+    "image button";
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
   gap: 15px;
   padding: 20px;
   background: rgb(255 255 255 / 10%);
@@ -30,6 +34,7 @@
 }
 
 .recipeHeader {
+  grid-area: image;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -38,9 +43,14 @@
 }
 
 .recipeContent {
+  grid-area: content;
   display: flex;
   flex-direction: column;
   gap: 15px;
+}
+
+.favoriteButton {
+  grid-area: button;
 }
 
 .recipeTitle {
