@@ -4,7 +4,7 @@ const verifyAccessToken = require("../middleware/verifyAccessToken");
 
 router.get("/", IngredientController.getIngredients);
 router.get("/:id", IngredientController.getIngredient);
-router.post("/", IngredientController.addIngredient);
+router.post("/", verifyAccessToken, IngredientController.addIngredient);
 router.put("/:id", verifyAccessToken, IngredientController.updateIngredient);
 router.delete("/:id", verifyAccessToken, IngredientController.removeIngredient);
 

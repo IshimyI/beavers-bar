@@ -3,7 +3,9 @@ const StockService = require("../services/Stock.service");
 class StockController {
   static async getUserStock(req, res) {
     const { id } = req.params;
-    console.log("ID из запроса:", req.params.id);
+    if (Number(id) !== res.locals.user.id) {
+      return res.status(403).json({ error: "Нельзя смотреть чужой склад" });
+    }
     try {
       const stock = await StockService.getUserStock(id);
       res.status(200).json(stock);
@@ -15,6 +17,9 @@ class StockController {
 
   static async createUserStock(req, res) {
     const { id } = req.params;
+    if (Number(id) !== res.locals.user.id) {
+      return res.status(403).json({ error: "Нельзя менять чужой склад" });
+    }
     const { ingredientTypeId, ingredientBalance, title, strength } = req.body;
     try {
       const stock = await StockService.createUserStock(
@@ -37,6 +42,9 @@ class StockController {
 
   static async updateStockThunk(req, res) {
     const { id: userId, itemId } = req.params;
+    if (Number(userId) !== res.locals.user.id) {
+      return res.status(403).json({ error: "Нельзя менять чужой склад" });
+    }
     const { ingredientTypeId, ingredientBalance, title, strength } = req.body;
     if (!itemId) {
       return res.status(400).json({ error: "Stock item ID is required" });
@@ -63,6 +71,9 @@ class StockController {
 
   static async deleteUserStock(req, res) {
     const { id: userId, itemId } = req.params;
+    if (Number(userId) !== res.locals.user.id) {
+      return res.status(403).json({ error: "Нельзя менять чужой склад" });
+    }
     if (!itemId) {
       return res.status(400).json({ error: "Stock item ID is required" });
     }

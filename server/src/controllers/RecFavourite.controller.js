@@ -3,7 +3,8 @@ const RecipeService = require("../services/Recipe.service");
 
 class RecFavouriteController {
   static async addUserFavRecipe(req, res) {
-    const { userId, recipeId } = req.body;
+    const userId = res.locals.user.id;
+    const { recipeId } = req.body;
     try {
       const newFav = await RecFavouriteService.findOrCreate(userId, recipeId);
       if (!newFav) {
@@ -26,7 +27,8 @@ class RecFavouriteController {
   }
 
   static async deleteUserFavRecipe(req, res) {
-    const { userId, recipeId } = req.body;
+    const userId = res.locals.user.id;
+    const { recipeId } = req.body;
     try {
       const delFav = await RecFavouriteService.findOne(userId, recipeId);
       if (!delFav) {
